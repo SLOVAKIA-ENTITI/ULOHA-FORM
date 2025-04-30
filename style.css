@@ -43,28 +43,23 @@ form{
     border-radius: 16px;
 }
 .text{
-    width: 250px;
+    width: 200px;
     height: 45px;
     border-radius: 32px;
     background-color: rgb(226, 226, 226);
     border: none;
     margin-bottom: 15px;
 }
+input {
+    padding: 0 25px;
+}
 .textareaM{
     font-family: 'Gilroy', sans-serif;
-    height:125px;
-    width: 100%;
+    height:100px;
+    width: 200px;
     background-color: rgb(226, 226, 226);
     border-radius: 16px;
+    padding: 15px 25px;
     border: none;
-}
-input::placeholder{
-    position:absolute;
-    left: 25px;
-    top: 16px;
-}
-textarea::placeholder{
-    position:absolute;
-    left: 25px;
-    top: 16px;
+    resize: none;
 }
