@@ -1,30 +1,37 @@
 <?php
+function kontrola($udaje){
+    $udaje = trim($udaje);
+    $udaje = htmlspecialchars($udaje);
+    $udaje = stripcslashes($udaje);
+
+
+    return $udaje;
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST ['subj'])){
-        if(empty($_POST ['email']) || empty($_POST ['pas']) || empty($_POST ['pas2'])){
-            $stav = 0;
-            $error = "Navyplnil si všetko";
+    $meno = kontrola($_POST['name']);
+    $email = kontrola($_POST['email']);
+    $predmet = kontrola($_POST['subj']);
+    $pripomienka = kontrola($_POST['poznamka']);
+    if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST ['subj'])  && isset($_POST ['poznamka'])){
+        if(empty($_POST ['email'] || empty($_POST ['subj']) || empty($_POST ['name'])) || empty(($_POST ['poznamka']))){
+            $error = "Nevyplnil si všetko";
         }
         else{
-            $email = $_POST['email'];
             if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 
-                   
-                }
-                else{
-                    $error =  "Invalid email";
-                }
+                $error = "Úspešne odoslané!";
+             }
+             else{
+                $error =  "Invalid email!";
             }
         }
-    else{
-        $error =  "Nevyplnil si všetko";
     }
-}
+    else{
+        $error =  "Nevyplnil si všetko!";
+    }}
 else{
-    $error =  "ERROR";
+        $error =  "ERROR!";
 }
-
-
 
 
 
@@ -51,7 +58,7 @@ else{
     <label>Subject:</label>
     <input type="text" class="text" name="subj" placeholder="Enter subject">
     <label>Message:</label>
-    <textarea class="textareaM" placeholder="Enter message"></textarea>
+    <textarea class="textareaM" placeholder="Enter message" name="poznamka"></textarea>
     <button class="buttonS">Submit <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
     
 </form>
